@@ -1,3 +1,93 @@
+🟢 E1️⃣ Alternate Sum Skipping — DETAILED EXPLANATION
+🔹 Problem Statement (Rewritten Simply)
+
+You are given an array of integers.
+
+You must:
+
+Start from index 0
+
+Add only elements at EVEN indices (0, 2, 4, …)
+
+Keep adding one by one
+
+STOP immediately when the sum becomes greater than 50
+
+Print the final sum
+
+🔹 IMPORTANT RULES (READ CAREFULLY)
+
+1️⃣ Only EVEN indices
+
+Index 0 → allowed
+
+Index 1 → ❌ skip
+
+Index 2 → allowed
+
+Index 3 → ❌ skip
+
+⚠️ This is index-based, NOT value-based.
+
+2️⃣ Stop condition
+
+As soon as sum > 50
+
+Do NOT continue further
+
+Do NOT add remaining elements
+
+3️⃣ Output
+
+Print only the sum
+
+Not the index
+
+Not the count
+
+🔹 GIVEN INPUT
+[10, 20, 5, 30, 40]
+
+
+Let’s write indices clearly:
+
+Index	Value
+0	10
+1	20
+2	5
+3	30
+4	40
+🔹 STEP-BY-STEP WALKTHROUGH
+🟢 Start
+sum = 0
+
+🔹 Index 0 (even) → ADD
+sum = 0 + 10 = 10
+
+🔹 Index 1 (odd) → SKIP
+sum = 10
+
+🔹 Index 2 (even) → ADD
+sum = 10 + 5 = 15
+
+🔹 Index 3 (odd) → SKIP
+sum = 15
+
+🔹 Index 4 (even) → ADD
+sum = 15 + 40 = 55
+
+
+🚨 Now:
+
+sum > 50
+
+
+👉 STOP immediately
+
+🔹 FINAL OUTPUT
+55
+
+
 
 // Use this editor to write, compile and run your Java code online
 import java.util.*;
