@@ -51,7 +51,7 @@ class Main {
                 index = index + (2 * direction);
             } else {
                 // odd → reverse direction, move 1 step
-                direction = -direction;
+                direction = -direction; //- not substraction making inverse of sign 1 = -1 like that
                 index = index + direction;
             }
         }
