@@ -1,0 +1,159 @@
+
+//Element with Frequency > n/k
+
+
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        int k = sc.nextInt();
+        for(int i=0;i<n;i++){
+            arr[i] = sc.nextInt();
+        }
+        HashMap<Integer,Integer>hm = new HashMap<>();
+        ArrayList<Integer>res = new ArrayList<>();
+        for(int i=0;i<n;i++){
+            hm.put(arr[i],hm.getOrDefault(arr[i],0)+1);
+        }
+        for(int key:hm.keySet()){
+            if(hm.get(key)>n/k){
+                res.add(key);
+            }
+        }
+        // for(int num:res){
+        //     System.out.println(num+" ");
+        // }
+        System.out.print(res);
+    }
+}
+
+
+Let’s dry-run Problem-5 (Element with frequency > n/k) step-by-step using your exact example, very clearly and slowly.
+
+🧪 Problem Setup
+arr = [1, 2, 3, 1, 2, 1, 1, 2]
+k = 3
+n = 8
+
+Step 0: Calculate threshold
+n / k = 8 / 3 = 2   (integer division)
+
+
+👉 We must print elements whose final frequency > 2
+
+🧩 Code We Are Dry-Running (Correct Logic)
+HashMap<Integer, Integer> hm = new HashMap<>();
+
+// Step 1: Count frequency
+for (int i = 0; i < n; i++) {
+    hm.put(arr[i], hm.getOrDefault(arr[i], 0) + 1);
+}
+
+// Step 2: Check frequency > n/k
+for (int key : hm.keySet()) {
+    if (hm.get(key) > n / k) {
+        System.out.println(key);
+    }
+}
+
+🔁 STEP 1: Frequency Counting (Very Important)
+
+We traverse the array once and build the HashMap.
+
+Initial state
+hm = { }
+
+i = 0 → arr[0] = 1
+hm = {1=1}
+
+i = 1 → arr[1] = 2
+hm = {1=1, 2=1}
+
+i = 2 → arr[2] = 3
+hm = {1=1, 2=1, 3=1}
+
+i = 3 → arr[3] = 1
+hm = {1=2, 2=1, 3=1}
+
+i = 4 → arr[4] = 2
+hm = {1=2, 2=2, 3=1}
+
+i = 5 → arr[5] = 1
+hm = {1=3, 2=2, 3=1}
+
+i = 6 → arr[6] = 1
+hm = {1=4, 2=2, 3=1}
+
+i = 7 → arr[7] = 2
+hm = {1=4, 2=3, 3=1}
+
+✅ Final Frequency Map
+Element	Frequency
+1	4
+2	3
+3	1
+🔁 STEP 2: Check frequency > n/k
+
+Recall:
+
+n/k = 2
+
+
+We now iterate over the HashMap keys.
+
+key = 1
+hm.get(1) = 4
+4 > 2 → ✅ TRUE
+
+
+Print:
+
+1
+
+key = 2
+hm.get(2) = 3
+3 > 2 → ✅ TRUE
+
+
+Print:
+
+2
+
+key = 3
+hm.get(3) = 1
+1 > 2 → ❌ FALSE
+
+
+Do nothing.
+
+✅ Final Output
+1
+2
+
+
+(Order may vary because HashMap has no fixed order, but values are correct.)
+
+🧠 IMPORTANT UNDERSTANDING (THIS IS KEY)
+Why both 1 and 2 are printed?
+
+1 appears 4 times
+
+2 appears 3 times
+
+Threshold is > 2
+
+Both satisfy the condition
+
+❌ Common Wrong Thinking (Avoid This)
+
+❌ Printing while counting
+❌ Printing same element multiple times
+❌ Using >= n/k instead of > n/k
+❌ Assuming output order matters
+
+🎯 One-Line Interview Explanation
+
+“I first count the frequency of all elements.
+Then I print elements whose final frequency is greater than n/k.”
